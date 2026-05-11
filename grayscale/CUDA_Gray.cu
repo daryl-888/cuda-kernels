@@ -41,7 +41,7 @@ void ImgMan(unsigned char * In_h, unsigned char * Out_h,int width, int height, i
 }
 
 void ReadImage(unsigned char ** ImgData, int * width, int * height){
-    FILE *f = fopen("C:/Users/dpapl/Practice/Grayscale test/sample_1920x1280.ppm", "rb");
+    FILE *f = fopen("sample_1920x1280.ppm", "rb");
 
     fscanf(f, "P6\n%d %d\n255\n", width, height);
     
