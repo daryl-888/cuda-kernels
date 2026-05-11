@@ -10,12 +10,6 @@
 *.cubin
 *.fatbin
 
-# Output images
-*.pgm
-*.ppm
-*.bmp
-*.png
-*.jpg
 
 # Build directories
 build/
