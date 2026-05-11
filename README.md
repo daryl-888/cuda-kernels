@@ -15,6 +15,9 @@ Vector addition — "Hello World" of CUDA.
 ### `grayscale/`
 Converting an RGB image to grayscale on the GPU. A simple but satisfying first visual application.
 
+### `blur/`
+Box blur applied to a full color (RGB) image on the GPU. Each thread handles one pixel, averaging its neighbors across all 3 channels. Reads a PPM file, writes a blurred PPM file.
+
 ### `PMPP/`
 Exercises from the book *Programming Massively Parallel Processors*. Working through each chapter.
 

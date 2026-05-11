@@ -14,3 +14,7 @@
 # Build directories
 build/
 out/
+
+# Generated output images
+output.ppm
+output.pgm
