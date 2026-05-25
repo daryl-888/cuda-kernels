@@ -1,0 +1,16 @@
+# Compiled binaries
+*.exe
+*.obj
+*.o
+*.exp
+*.lib
+
+# CUDA intermediate files
+*.ptx
+*.cubin
+*.fatbin
+
+
+# Build directories
+build/
+out/
