@@ -1,5 +1,6 @@
+//#define __STRICT_ANSI__
 #include <cstdio>
-#include <cmath>
+#include <cstdlib>
 #define CHANNELS 3
 __global__
 void colortoGrayscaleConvertion(unsigned char * Pout, 
@@ -30,7 +31,7 @@ void ImgMan(unsigned char * In_h, unsigned char * Out_h,int width, int height, i
     cudaMemcpy(In_d, In_h, size, cudaMemcpyHostToDevice);
     
 
-    dim3 dimGrid(ceil(width/16.0), ceil(height/16.0), 1);
+    dim3 dimGrid((width + 15) / 16, (height + 15) / 16, 1);
     dim3 dimBlock(16,16, 1);
     colortoGrayscaleConvertion<<<dimGrid, dimBlock>>>(Out_d, In_d, width, height);
 
@@ -40,8 +41,8 @@ void ImgMan(unsigned char * In_h, unsigned char * Out_h,int width, int height, i
     cudaFree(Out_d);
 }
 
-void ReadImage(unsigned char ** ImgData, int * width, int * height){
-    FILE *f = fopen("sample_1920x1280.ppm", "rb");
+void ReadImage(const char* filename, unsigned char ** ImgData, int * width, int * height){
+    FILE *f = fopen(filename, "rb");
 
     fscanf(f, "P6\n%d %d\n255\n", width, height);
     
@@ -70,7 +71,7 @@ void WriteImage(unsigned char *pixOut, int width, int height){
     return;
 }
 
-int main(){
+int main(int argc, char* argv[]){
 unsigned char *ImgData;
 int width;
 int height;
@@ -78,7 +79,8 @@ int height;
 unsigned char *pixOut;
 
 //call ReadImage and get values
-ReadImage(&ImgData, &width, &height);
+const char* filename = argc > 1 ? argv[1] : "sample_1920x1280.ppm";
+ReadImage(filename, &ImgData, &width, &height);
 //send values to ImgMan
 pixOut = (unsigned char *)malloc(width * height);
 

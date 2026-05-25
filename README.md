@@ -13,7 +13,12 @@ A collection of CUDA kernels I've written while learning GPU programming. Some a
 Vector addition — "Hello World" of CUDA.
 
 ### `grayscale/`
-Converting an RGB image to grayscale on the GPU. A simple but satisfying first visual application.
+Converting an RGB image to grayscale on the GPU. A simple but satisfying first visual application. Reads a PPM file, writes a PGM file.
+
+```
+nvcc grayscale/CUDA_Gray.cu -o grayscale/grayscale
+./grayscale/grayscale grayscale/sample_1920x1280.ppm
+```
 
 ### `blur/`
 Box blur applied to a full color (RGB) image on the GPU. Each thread handles one pixel, averaging its neighbors across all 3 channels. Reads a PPM file, writes a blurred PPM file.
