@@ -22,3 +22,7 @@ output.pgm
 # IDE / tooling
 .clangd
 .vscode/
+
+# Compiled binaries (no extension, Linux)
+grayscale/grayscale
+blur/blur
