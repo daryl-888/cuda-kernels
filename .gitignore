@@ -18,3 +18,7 @@ out/
 # Generated output images
 output.ppm
 output.pgm
+
+# IDE / tooling
+.clangd
+.vscode/
